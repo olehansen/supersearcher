@@ -2,7 +2,7 @@
   "profiles": {
     "SuperSearcher.SearchConsoleApp": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\Projects\\supersearcher\\SuperSearcher.Tests.AutomatedTests\\Data\" XvLPjd4B2FEAAAAAAAAAAYA2y6VvQyl3UEG0Kka4j4W7Xregz-664ckvao32LcMC"
+      "commandLineArgs": "\"SuperSearcher.Tests.AutomatedTests\\Data\" XvLPjd4B2FEAAAAAAAAAAYA2y6VvQyl3UEG0Kka4j4W7Xregz-664ckvao32LcMC"
     }
   }
 }

@@ -6,6 +6,7 @@ using SuperSearcher.Infrastructure.Memory;
 using SuperSearcher.Repositories;
 using SuperSearcher.Services;
 using System;
+using System.IO;
 
 // TODO add documentation to some functions
 // TODO add test data, for quick local test run
@@ -32,7 +33,7 @@ namespace SuperSearcher.SearchConsoleApp
                 return;
             }
 
-            var folderRootPath = args[0];
+            var folderPath = args[0];
             var dropboxAccessToken = args[1];
 
             #endregion
@@ -48,7 +49,13 @@ namespace SuperSearcher.SearchConsoleApp
                     })
                 .AddSingleton<IFileSystemRepository, WindowsFileSystemRepository>(serviceProvider =>
                     {
-                        return new WindowsFileSystemRepository(folderRootPath);
+                        var pathToData = Path.IsPathRooted(folderPath) ? 
+                            folderPath : 
+                            Path.GetFullPath(Path.Combine(
+                                AppDomain.CurrentDomain.SetupInformation.ApplicationBase, @"..\..\..\..\", 
+                                folderPath));
+
+                        return new WindowsFileSystemRepository(pathToData);
                     })
                 .AddSingleton<ISearchTermRepository, MemorySearchTermRepository>()
                 .AddSingleton<IStatisticService, StatisticService>()
